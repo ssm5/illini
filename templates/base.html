@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="viewport" content="width=320">
+
+    <!-- Bootstrap CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+    <!-- Semantic-UI CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.css">
+    <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.js"></script>
+
+    {% load staticfiles %}
+
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+
+    <meta charset="UTF-8">
+
+    <title>{% block title %}{% endblock %}</title>
+</head>
+
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">
+                Illini Organizer
+            </a>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="ui card">
+        <div class="image">
+            <img src="{% static "images/acm-logo.png" %}" alt="ACM logo">
+        </div>
+        <div class="content">
+            <a class="header">Association of Computing Machinery</a>
+            <div class="meta">
+                <span class="date">Founded: Nov 1st, 1967</span>
+            </div>
+            <div class="description">
+                ACM@UIUC is a student chapter of the Association for Computing Machinery,
+                a professional society dedicated to advancing human capabilities through information technology.
+            </div>
+        </div>
+        <div class="extra content">
+            <a>
+                <i class="user icon"></i>
+                500 members
+            </a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
