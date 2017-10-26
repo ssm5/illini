@@ -1,9 +1,11 @@
 {% extends 'base.html' %}
 
+{% block title %} {{ organization.name }} {% endblock %}
+
 {% load staticfiles %}
 
 {% block content %}
-
-    {{ organization.name }}
-
+    <div class="container-fluid">
+         {{ organization.name }}
+    </div>
 {% endblock %}
