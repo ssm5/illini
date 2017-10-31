@@ -6,26 +6,14 @@
 
 {% block content %}
     <div class="ui four doubling cards">
-        {% for organization in organizations %}
+        {% for tag in tags %}
         <div class="container-fluid">
             <div class="ui card">
                 <div class="image">
-                    <img src="{{ organization.logo }}" alt="{{ organization.name }} logo">
+                    <img alt="{{ tag.name }} logo">
                 </div>
                 <div class="content">
-                    <a class="header" href="{% url 'detail' organization.id %}">{{ organization.namew }}</a>
-                    <div class="meta">
-                        <span class="date">{{ organization.found_date }}</span>
-                    </div>
-                    <div class="description">
-                        {{ organization.description }}
-                    </div>
-                </div>
-                <div class="extra content">
-                    <a>
-                        <i class="user icon"></i>
-                        {{ organization.members }} member(s)
-                    </a>
+                    <a class="header" href="{% url 'rso' tag.id %}"> {{ tag.name }} </a>
                 </div>
             </div>
         </div>
