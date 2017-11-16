@@ -235,43 +235,66 @@ Sikh < religious
 Vedanta < religious
 Residence hall
 Equality < political
+Foster < philanthropy
 ROTC
 STEM < academic"""
 
 
-# taglines = broad_tags_string.split("\n")
-# for line in taglines:
-#     arr = line.split(' < ')
-#     tag = arr[0]
-#     obj, created = Tag.objects.get_or_create(name=tag, breadth='B')
-#     if created:
-#         print('Added broad tag:', obj)
-#
-# taglines = specific_tags_string.split("\n")
-# for line in taglines:
-#     arr = line.split(' < ')
-#     tag = arr[0]
-#     obj, created = Tag.objects.get_or_create(name=tag, breadth='S')
-#     if created:
-#         print('Added specific tag:', obj)
-#
-# taglines = niche_tags_string.split("\n")
-# for line in taglines:
-#     arr = line.split(' < ')
-#     tag = arr[0]
-#     obj, created = Tag.objects.get_or_create(name=tag, breadth='N')
-#     if created:
-#         print('Added niche tag:', obj)
-
-taglines = (specific_tags_string + "\n" + niche_tags_string).split("\n")
+taglines = broad_tags_string.split("\n")
 for line in taglines:
     arr = line.split(' < ')
+    tag = arr[0]
+    obj, created = Tag.objects.get_or_create(name=tag, breadth='B')
+    if created:
+        print('Added broad tag:', obj)
+
+taglines = specific_tags_string.split("\n")
+for line in taglines:
+    arr = line.split(' < ')
+    tag = arr[0]
+    obj, created = Tag.objects.get_or_create(name=tag, breadth='S')
+    if created:
+        print('Added specific tag:', obj)
+
+taglines = niche_tags_string.split("\n")
+for line in taglines:
+    arr = line.split(' < ')
+    tag = arr[0]
+    obj, created = Tag.objects.get_or_create(name=tag, breadth='N')
+    if created:
+        print('Added niche tag:', obj)
+
+taglines = (broad_tags_string + '\n' + specific_tags_string + '\n' + niche_tags_string).split('\n')
+for line in taglines:
+    print(tag.parents.all().count())
     if len(arr) > 1:
         tag_string = arr[0]
         tag = Tag.objects.get(name=tag_string)
         parent_strings = arr[1].split(', ')
+        # print(tag.parents.all().count())
+        # tag.parents.clear()
         for parent_string in parent_strings:
             parent = Tag.objects.get(name__iexact=parent_string)
-            print(parent.__dict__)
+            # print(parent.__dict__)
             tag.parents.add(parent)
             print('Added', parent_string, 'as parent to', tag_string)
+
+# tag1 = Tag.objects.get(name='Academic')
+# tag2 = Tag.objects.get(name='Accounting')
+#
+# tag1.parents.clear()
+# tag2.parents.clear()
+# print("Before:")
+# print(tag1.breadth)
+# print("Tag1 has these parents:", tag1.parents.all())
+# print("Tag2 has these parents:", tag2.parents.all())
+#
+# tag2.parents.add(tag1)
+# print("After:")
+# print("Tag1 has these parents:", tag1.parents.all())
+# print("Tag2 has these parents:", tag2.parents.all())
+#
+# tag1.parents.clear()
+# print("Lastly:")
+# print("Tag1 has these parents:", tag1.parents.all())
+# print("Tag2 has these parents:", tag2.parents.all())

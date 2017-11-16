@@ -1,5 +1,8 @@
 from django.shortcuts import render, get_object_or_404
 from .models import *
+from django.core import serializers
+from django.http import JsonResponse
+from django.forms.models import model_to_dict
 
 
 def index(request):
@@ -16,3 +19,6 @@ def detail(request, organization_id):
     organization = get_object_or_404(Organization, pk=organization_id)
     return render(request, 'detail.html', {'organization': organization})
 
+
+def organizations(request):
+    return JsonResponse({'organizations': list(Organization.objects.all().values('name', 'summary'))})
