@@ -14,6 +14,7 @@ class Tag(models.Model):
     )
     name = models.CharField(_('Tag'), max_length=64, unique=True)
     breadth = models.CharField(_('Breadth'), max_length=1, choices=TAG_BREADTHS, default='N')
+    parents = models.ManyToManyField('self', blank=True)
     # organizationCount = models.IntegerField(_('Organization Count'), default=0)
 
     def __str__(self):

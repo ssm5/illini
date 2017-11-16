@@ -5,8 +5,6 @@ import pprint
 import sys
 from app.models import Organization
 
-# if __name__ == "__main__":
-print(sys.path)
 pp = pprint.PrettyPrinter()
 URL_BASE = 'https://illinois.campuslabs.com/engage/api/discovery/organization/bykey/'
 
